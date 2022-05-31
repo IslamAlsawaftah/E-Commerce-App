@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Cosmetic_Store.Models.Product>  
+    
+    <h1>List Of Products: </h1>
+    <ul>
+        @foreach (var item in Model)
+            {
+             <li>
+                  <div>
+                    <h3>@item.Name</h3>
+                  </div>
+             </li>
+            }
+    </ul>
