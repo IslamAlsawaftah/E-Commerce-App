@@ -1,0 +1,11 @@
+﻿@model Cosmetic_Store.Models.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+   
+<label>Name</label>
+    <input asp-for="@Model.Name"/>
+    <label>Price</label>
+    <input asp-for="@Model.Price"/>
+    <label>Description</label>
+    <input asp-for="@Model.Description"/>
+    <label>Image</label>
+    <input asp-for="@Model.ImageURL"/>
