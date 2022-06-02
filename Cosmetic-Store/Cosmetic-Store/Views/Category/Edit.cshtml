@@ -1,0 +1,15 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Cosmetic_Store.Models.Category
+
+<h3>Edit Category</h3>
+
+<form asp-controller="Category" asp-action="Edit" method="post">
+    <input hidden asp-for="@Model.CategoryId"/>
+  <partial name="_CategoryFields"></partial>
+
+        <button type="submit" style="background-color:green;width: 70px;color: white;"> Save </button>
+        <a asp-controller = "Category" asp-action= "Index"> Back</a>
+
+</form>
+
+<div asp-validation-summary="All"></div>

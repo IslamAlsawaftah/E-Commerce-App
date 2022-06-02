@@ -1,0 +1,36 @@
+﻿@model Cosmetic_Store.Models.Category
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+    <h1>Detail of Gategory</h1>  
+    <img  src="@Model.Logo"/>
+    <h1>@Model.Name </h1>
+    <h3>More Info For Category: @Model.Description </h3>
+<div>
+    @foreach (var item in Model.ProductCategories)
+   {
+       <img src="@item.Product.ImageURL" style=" width: 300px; height:280px"/>
+       <ul>
+           <li>
+                <h3>Product Name: @item.Product.Name</h3>
+                <ul>
+                    <li>
+                        <p> Description: @item.Product.Description</p>
+                        <h3> Price: @item.Product.Price JD</h3>
+                    </li>
+                </ul>
+           </li>
+       </ul>
+       <button><a asp-controller = "Product" asp-action= "Edit" asp-route-id ="@item.Product.ProductId">Edit</a></button> 
+       <button><a asp-controller = "Product" asp-action= "Delete" asp-route-id ="@item.Product.ProductId">Delete</a></button>
+   }
+</div>
+
+   <div>
+        <button><a asp-controller = "Category" asp-action= "Index" >Back</a></button> 
+        <button><a asp-controller = "Category" asp-action= "Edit" asp-route-id ="@Model.CategoryId">Edit</a></button>
+        <button><a asp-controller = "Category" asp-action= "Delete" asp-route-id ="@Model.CategoryId">Delete</a></button>
+   </div>
+
+
+
