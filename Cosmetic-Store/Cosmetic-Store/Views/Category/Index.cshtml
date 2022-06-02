@@ -1,15 +1,30 @@
 ﻿@model IEnumerable<Cosmetic_Store.Models.Category>
 
-    <h1>List Of Categories: </h1>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-    <ul>
+<h1 style="color:rebeccapurple">Categories: </h1>
+
+<button><a asp-controller = "Category" asp-action= "Create"> Create New Category</a></button>
+<button><a asp-controller = "Product" asp-action= "Index"> Product</a></button>
+
+
+<hr />
+<div style="display:flex; justify-content: space-between">
+    
         @foreach (var item in Model)
-            {
-             <li>
-                  <div>
-                    <h3>@item.Name</h3>
-                  </div>
-             </li>
-            }
-    </ul>
+        {
+            <a asp-controller = "Category" asp-action= "Detail" asp-route-id ="@item.CategoryId" >
+            <div>
+                <img src="@item.Logo" style=" width: 300px; height:280px"/>
+                <ul >
+                    <li>
+                        <h1>@item.Name</h1>
+                    </li>
+                </ul>
+            </div>
+            </a>   
+        }
+</div>
+    
+
     

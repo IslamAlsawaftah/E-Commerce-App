@@ -15,20 +15,66 @@ namespace Cosmetic_Store.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //List<Category> categoriesList = new List<Category>()
-            //{
-            //    new Category() { CategoryId = 1, Name = "Mascara" },
-            //    new Category() { CategoryId = 2, Name = "Lipstick" },
-            //    new Category() { CategoryId = 3, Name = "Powder" }
-            //};
-
             var listOfCategories = await _category.GetCategories();
             return View(listOfCategories);
         }
-        public async Task<IActionResult> GategoryDetail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
             var category = await _category.GetCategoryById(id);
             return View(category);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();  
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                var newCategory = await _category.Create(category);
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            Category category = await _category.GetCategoryById(id);
+            return View(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                var updateCategory = await _category.Update(category.CategoryId, category);
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    Category category = await _category.GetCategoryById(id);
+        //    return View(category);
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    await _category.Delete(id);
+        //    return RedirectToAction("Index");
+        //}
+        public async Task<IActionResult> Delete(int id)
+        {
+            Category category = await _category.GetCategoryById(id);
+            return View(category);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _category.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

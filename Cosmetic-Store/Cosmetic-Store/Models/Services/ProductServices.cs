@@ -43,13 +43,7 @@ namespace Cosmetic_Store.Models.Services
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _context.Products.Select(x => new Product
-            {
-                Name = x.Name,
-                Description = x.Description,
-                ImageURL = x.ImageURL,
-                Price = x.Price
-            }).ToListAsync();
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<Product> Update(int id, Product product)

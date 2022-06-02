@@ -1,0 +1,16 @@
+﻿@model Cosmetic_Store.Models.Category
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2 style="color:red">Are You Sure to Delete?</h2>
+
+<div>
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+</div>
+
+<form asp-controller="Category" asp-action="Delete" method="post" asp-route-id ="@Model.CategoryId">
+        <button type="submit" style="background-color:red;width: 70px;color: white;"> Delete </button>
+
+        <a asp-controller = "Category" asp-action= "Index"> Back</a>
+
+</form>

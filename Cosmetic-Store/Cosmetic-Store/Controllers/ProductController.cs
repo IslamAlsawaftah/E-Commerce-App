@@ -17,48 +17,54 @@ namespace Cosmetic_Store.Controllers
             var listOfProducts = await _product.GetProducts();
             return View(listOfProducts);
         }
-        public async Task<IActionResult> ProductDetail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
             var product = await _product.GetProductById(id);
             return View(product);
         }
-        public IActionResult Add()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Product product)
+        public async Task<IActionResult> Create(Product product)
         {
-            var products = await _product.Create(product);
             if (ModelState.IsValid)
             {
-                return Content("You have successfully added a product ! \nName: " + product.Name + " \nPrice: " + product.Price + " \nDescription: " + product.Description + " \nImage: " + product.ImageURL);
+                var newProduct = await _product.Create(product);
+                return RedirectToAction("Index");
             }
-            return View(products);
+            return View(product);
         }
-        public async Task<IActionResult> Update(int id)    
+        public async Task<IActionResult> Edit(int id)    
         {
-            Product product1 = await _product.GetProductById(id);
-            return View(product1);
+            Product updateProduct = await _product.GetProductById(id);
+            return View(updateProduct);
         }
 
         [HttpPost]
         // -http://localhost:22304/Product/Update?id=11
-        public async Task<IActionResult> Update(Product product)
+        public async Task<IActionResult> Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                await _product.Update(product.ProductId, product);
-                return Content("You have successfully edited data");
+                var updateProduct = await _product.Update(product.ProductId, product);
+                return RedirectToAction("Index");
             }
             return View(product);
         }
         // -http://localhost:22304/Product/Delete?id=11
         public async Task<IActionResult> Delete(int id)
         {
+            Product product = await _product.GetProductById(id);
+            return View(product);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
             await _product.Delete(id);
-            return Content("Product deleted successfully");
+            return RedirectToAction("Index");
         }
     }
 }

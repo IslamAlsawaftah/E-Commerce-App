@@ -1,0 +1,19 @@
+﻿@model Cosmetic_Store.Models.Category
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+  
+
+<div style="padding-bottom:20px;margin:20px">
+    <label>Name</label>
+    <input asp-for="@Model.Name"/>  
+</div>
+<div style="padding-bottom:20px;margin:20px">
+    <label>Description</label>
+    <input asp-for="@Model.Description"/>   
+</div>   
+<div style="padding-bottom:20px;margin:20px">
+    <label>Image</label>
+    <input asp-for="@Model.Logo" type="file"/>
+</div>
+
+
+
