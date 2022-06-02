@@ -3,7 +3,7 @@
 ## Description
 
 ## ERD 
-![ERD](Cosmetic-Store/Cosmetic-Store/wwwroot/images/ERD.JPG)
+![ERD](Cosmetic-Store/Cosmetic-Store/wwwroot/images/ERD.jpg)
 ### Explanation of Tables:
 - Category Table: contains the differnt categories for the Cosmetic and holds the name of each category.
 - Product Table: contains the prices, and the names of each cosmetic for sale.
