@@ -9,11 +9,12 @@
 <div style="padding-bottom:20px;margin:20px">
     <label>Description</label>
     <input asp-for="@Model.Description"/>   
-</div>   
-<div style="padding-bottom:20px;margin:20px">
-    <label>Image</label>
-    <input asp-for="@Model.Logo" type="file"/>
 </div>
+<div style="padding-bottom:20px;margin:20px">
+    <label asp-for="@Model.Logo">Image</label>
+    <input asp-for="@Model.Logo" />
+</div>
+
 
 
 
