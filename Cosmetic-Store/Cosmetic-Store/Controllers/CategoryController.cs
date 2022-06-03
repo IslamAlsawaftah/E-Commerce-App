@@ -24,7 +24,7 @@ namespace Cosmetic_Store.Controllers
             return View(category);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();  
         }
@@ -54,17 +54,6 @@ namespace Cosmetic_Store.Controllers
             }
             return View(category);
         }
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    Category category = await _category.GetCategoryById(id);
-        //    return View(category);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    await _category.Delete(id);
-        //    return RedirectToAction("Index");
-        //}
         public async Task<IActionResult> Delete(int id)
         {
             Category category = await _category.GetCategoryById(id);
